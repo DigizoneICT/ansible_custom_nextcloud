@@ -1,0 +1,27 @@
+---
+
+- name: Check if Guest app is installed
+  stat:
+    path: "{{ nextcloud_webroot }}/apps/guests"
+  register: guests_app_installed
+  become: true
+
+- name: Replace vertaling in .json file
+  replace:
+    path: "{{ nextcloud_webroot }}/apps/guests/l10n/{{ item.language }}.json"
+    regexp: "{{ item.regex }}"
+    replace: "{{ item.replacement }}"
+  with_items: 
+    - "{{ nextcloud_guests_l10n_replacements }}"
+  when: guests_app_installed.stat.exists
+  become: true
+
+- name: Replace vertaling in .js file
+  replace:
+    path: "{{ nextcloud_webroot }}/apps/guests/l10n/{{ item.language }}.js"
+    regexp: "{{ item.regex }}"
+    replace: "{{ item.replacement }}"
+  with_items: 
+    - "{{ nextcloud_guests_l10n_replacements }}"
+  when: guests_app_installed.stat.exists
+  become: true

@@ -1,0 +1,4 @@
+---
+
+- name: Custom configuration Guests app
+  include: ./guests_app.yml
