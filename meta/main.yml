@@ -1,0 +1,32 @@
+---
+galaxy_info:
+  author: jeroens
+  role_name: ansible_custom_nextcloud
+  description: Custom configuration role for Nextcloud installations managed by DGZ
+
+  license: BSD
+
+  min_ansible_version: "2.10"
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+        - focal
+        - jammy
+
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+        - bullseye
+
+  galaxy_tags:
+    - nextcloud
+    - filesharing
+    - installation
+    - private
+    - cloud
+
+dependencies: []
